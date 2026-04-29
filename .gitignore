@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+brokerguard.log
+.pytest_cache/
+.DS_Store

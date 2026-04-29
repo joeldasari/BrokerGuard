@@ -1,0 +1,39 @@
+{
+  "target": {
+    "host": "localhost",
+    "plaintext_port": 1883,
+    "tls_port": 8883
+  },
+  "summary": {
+    "pass_count": 5,
+    "fail_count": 0,
+    "risk_level": "LOW"
+  },
+  "results": [
+    {
+      "name": "Anonymous Access Check",
+      "status": "PASS",
+      "message": "Anonymous access blocked (connection refused)"
+    },
+    {
+      "name": "Authentication Enforcement",
+      "status": "PASS",
+      "message": "Authentication enforced (invalid credentials rejected)"
+    },
+    {
+      "name": "TLS Enforcement",
+      "status": "PASS",
+      "message": "TLS enforced (TLS connection established successfully; Plaintext MQTT port is disabled)"
+    },
+    {
+      "name": "Topic Authorization (ACL)",
+      "status": "PASS",
+      "message": "ACL enforced (broker denied subscription to 'admin/#')"
+    },
+    {
+      "name": "Publish Injection",
+      "status": "PASS",
+      "message": "Publish injection blocked for 'actuators/control' (publish rc=5)"
+    }
+  ]
+}

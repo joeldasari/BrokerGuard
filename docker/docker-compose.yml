@@ -1,0 +1,15 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: brokerguard-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "8883:8883"
+    volumes:
+      - ./profiles:/mosquitto/profiles
+      - ./secrets:/mosquitto/secrets
+      - ./certs:/mosquitto/certs
+      - ./data:/mosquitto/data
+      - ./log:/mosquitto/log
+    command: ["/bin/sh", "-c", "cp /mosquitto/profiles/${BROKER_PROFILE:-insecure}.conf /mosquitto/config/mosquitto.conf && exec mosquitto -c /mosquitto/config/mosquitto.conf"]

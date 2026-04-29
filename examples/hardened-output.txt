@@ -1,0 +1,13 @@
+BrokerGuard Scan Results
+Target: host=localhost, plaintext_port=1883, tls_port=8883
+
+[PASS] Anonymous access blocked (connection refused)
+[PASS] Authentication enforced (invalid credentials rejected)
+[PASS] TLS enforced (TLS connection established successfully; Plaintext MQTT port is disabled)
+[PASS] ACL enforced (broker denied subscription to 'admin/#')
+[PASS] Publish injection blocked for 'actuators/control' (publish rc=5)
+
+Total PASS: 5
+Total FAIL: 0
+Overall Risk Level: LOW
+================================

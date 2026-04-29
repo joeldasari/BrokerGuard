@@ -1,0 +1,46 @@
+$ make up-insecure
+cd docker && BROKER_PROFILE=insecure docker compose up -d
+[+] Running 1/1
+ ✔ Container brokerguard-mosquitto  Started
+
+$ make scan
+python3 brokerguard.py
+BrokerGuard Scan Results
+Target: host=localhost, plaintext_port=1883, tls_port=8883
+
+[FAIL] Anonymous access allowed (connected without credentials)
+[FAIL] Invalid credentials accepted by broker
+[FAIL] TLS enforcement failed: TLS connection failed: [Errno 61] Connection refused; Plaintext MQTT port is still accessible
+[FAIL] Unauthorized topic access allowed for 'admin/#'
+[FAIL] Unauthorized publish allowed to 'actuators/control'
+
+Total PASS: 0
+Total FAIL: 5
+Overall Risk Level: HIGH
+================================
+
+$ make down
+cd docker && docker compose down
+[+] Running 1/1
+ ✔ Container brokerguard-mosquitto  Removed
+
+$ make up-hardened
+cd docker && BROKER_PROFILE=hardened docker compose up -d
+[+] Running 1/1
+ ✔ Container brokerguard-mosquitto  Started
+
+$ make scan
+python3 brokerguard.py
+BrokerGuard Scan Results
+Target: host=localhost, plaintext_port=1883, tls_port=8883
+
+[PASS] Anonymous access blocked (connection refused)
+[PASS] Authentication enforced (invalid credentials rejected)
+[PASS] TLS enforced (TLS connection established successfully; Plaintext MQTT port is disabled)
+[PASS] ACL enforced (broker denied subscription to 'admin/#')
+[PASS] Publish injection blocked for 'actuators/control' (publish rc=5)
+
+Total PASS: 5
+Total FAIL: 0
+Overall Risk Level: LOW
+================================

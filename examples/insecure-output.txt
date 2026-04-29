@@ -1,0 +1,13 @@
+BrokerGuard Scan Results
+Target: host=localhost, plaintext_port=1883, tls_port=8883
+
+[FAIL] Anonymous access allowed (connected without credentials)
+[FAIL] Invalid credentials accepted by broker
+[FAIL] TLS enforcement failed: TLS connection failed: [Errno 61] Connection refused; Plaintext MQTT port is still accessible
+[FAIL] Unauthorized topic access allowed for 'admin/#'
+[FAIL] Unauthorized publish allowed to 'actuators/control'
+
+Total PASS: 0
+Total FAIL: 5
+Overall Risk Level: HIGH
+================================
