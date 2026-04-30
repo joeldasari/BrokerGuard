@@ -1,0 +1,15 @@
+.venv/bin/python3 brokerguard.py
+BrokerGuard Scan Results
+Target: host=localhost, plaintext_port=1883, tls_port=8883
+
+[FAIL] Anonymous access allowed (connected without credentials)
+[FAIL] Invalid credentials accepted by broker
+[FAIL] TLS enforcement failed: TLS connection failed: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081);
+Plaintext MQTT port is still accessible
+[PASS] ACL enforced (subscription to 'admin/#' rejected immediately)
+[FAIL] Unauthorized publish allowed to 'actuators/control'
+
+Total PASS: 1
+Total FAIL: 4
+Overall Risk Level: HIGH
+================================

@@ -1,0 +1,14 @@
+.venv/bin/python3 brokerguard.py
+BrokerGuard Scan Results
+Target: host=localhost, plaintext_port=1883, tls_port=8883
+
+[PASS] Anonymous access blocked (connection refused)
+[PASS] Authentication enforced (invalid credentials rejected)
+[FAIL] TLS enforcement failed: TLS connection failed: [Errno 61] Connection refused
+[PASS] ACL enforced or blocked by broker/network: [Errno 61] Connection refused
+[PASS] Publish injection blocked by broker/network: [Errno 61] Connection refused
+
+Total PASS: 4
+Total FAIL: 1
+Overall Risk Level: MEDIUM
+================================

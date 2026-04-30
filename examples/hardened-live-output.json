@@ -1,0 +1,40 @@
+.venv/bin/python3 brokerguard.py --json
+{
+  "target": {
+    "host": "localhost",
+    "plaintext_port": 1883,
+    "tls_port": 8883
+  },
+  "summary": {
+    "pass_count": 4,
+    "fail_count": 1,
+    "risk_level": "MEDIUM"
+  },
+  "results": [
+    {
+      "name": "Anonymous Access Check",
+      "status": "PASS",
+      "message": "Anonymous access blocked (connection refused)"
+    },
+    {
+      "name": "Authentication Enforcement",
+      "status": "PASS",
+      "message": "Authentication enforced (invalid credentials rejected)"
+    },
+    {
+      "name": "TLS Enforcement",
+      "status": "FAIL",
+      "message": "TLS enforcement failed: TLS connection failed: [Errno 61] Connection refused"
+    },
+    {
+      "name": "Topic Authorization (ACL)",
+      "status": "PASS",
+      "message": "ACL enforced or blocked by broker/network: [Errno 61] Connection refused"
+    },
+    {
+      "name": "Publish Injection",
+      "status": "PASS",
+      "message": "Publish injection blocked by broker/network: [Errno 61] Connection refused"
+    }
+  ]
+}
